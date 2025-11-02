@@ -1,0 +1,75 @@
+﻿<funcion>
+<parametros> a, b </parametros>
+<codigo>
+a = 5;
+b = a + 10;
+</codigo>
+</funcion>
+
+<funcion>
+<parametros> x, y, z </parametros>
+<codigo>
+x = 10;
+y = 20;
+z = x + y;
+
+<if>
+<condicion> x &lt; y </condicion>
+<codigo>
+z = z + 5;
+</codigo>
+</if>
+
+<do>
+<codigo>
+x = x + 1;
+</codigo>
+<condicion> x &lt; 15 </condicion>
+</do>
+
+</codigo>
+</funcion>
+
+<funcion>
+<parametros> x, 15, y </parametros>
+<codigo>
+x = 5;
+y = x + ;
+<if>
+<condicion> x <= </condicion>
+<codigo>
+z = 10;
+</codigo>
+</if>
+</codigo>
+</funcion>
+
+<funcion>
+<parametros> a, b, c </parametros>
+<codigo>
+a = 1;
+b = 2;
+<if>
+<condicion> a &lt; b </condicion>
+<codigo>
+c = a + b;
+</if>
+</codigo>
+</funcion>
+
+<funcion>
+<parametros> x, y </parametros>
+<codigo>
+x = 10;
+y = x * 2;
+</codigo>
+</funcion>
+
+<funcion>
+<parametros> a, b, c </parametros>
+<codigo>
+a = 5;
+b = 10;
+c = a + b;
+</codigo>
+</funcion>

@@ -1,0 +1,15 @@
+<funcion>
+<parametros> x, y </parametros>
+<codigo>
+x = 5;
+y = 10;
+
+<if>
+<condicion> x > 0 && y < 20 </condicion>
+<codigo>
+x = y + 5;
+</codigo>
+</if>
+
+</codigo>
+</funcion>

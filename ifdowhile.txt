@@ -1,0 +1,21 @@
+<funcion>
+<parametros> n, limite </parametros>
+<codigo>
+n = 5;
+
+<if>
+<condicion> n > 0 && n < 100 </condicion>
+<codigo>
+n = n + 10;
+</codigo>
+</if>
+
+<do>
+<codigo>
+n = n + 1;
+</codigo>
+<condicion> n < limite </condicion>
+</do>
+
+</codigo>
+</funcion>

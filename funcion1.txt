@@ -1,0 +1,8 @@
+<funcion>
+<parametros> a, b, c </parametros>
+<codigo>
+a = 10;
+b = 20;
+c = a + b;
+</codigo>
+</funcion>

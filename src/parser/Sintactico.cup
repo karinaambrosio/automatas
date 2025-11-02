@@ -1,0 +1,95 @@
+/* Sintactico.cup - versi?n limpia con EOF declarado */
+package parser;
+
+import java_cup.runtime.*;
+
+terminal FUNC_OPEN, FUNC_CLOSE;
+terminal PARAM_OPEN, PARAM_CLOSE;
+terminal COD_OPEN, COD_CLOSE;
+terminal IF_OPEN, IF_CLOSE;
+terminal COND_OPEN, COND_CLOSE;
+terminal DO_OPEN, DO_CLOSE;
+
+terminal ID, NUM, ASSIGN, SEMI, COMMA;
+terminal GT, LT, ANDAND, OROR, PLUS, MINUS, TIMES, DIV, LPAREN, RPAREN;
+terminal TEXT;
+terminal EOF;   /* declarado expl?citamente porque usamos lexer manual */
+
+non terminal program;
+non terminal funcion_list;
+non terminal funcion;
+non terminal parametros_block;
+non terminal codigo_block;
+non terminal codigo_content;
+non terminal statement;
+non terminal assignment;
+non terminal condicion_block;
+non terminal condicion_expr;
+non terminal parametros_list;
+non terminal parametro;
+
+start with program;
+
+program ::= funcion_list EOF
+            {: System.out.println("Parseo completado."); :}
+          ;
+
+funcion_list ::= /* empty */
+               | funcion_list funcion
+               ;
+
+funcion ::= FUNC_OPEN parametros_block codigo_block FUNC_CLOSE
+            {: PseudoParserDriver.totalFunciones++; :}
+          ;
+
+/* Par?metros */
+parametros_block ::= PARAM_OPEN parametros_list PARAM_CLOSE
+                    ;
+
+parametros_list ::= /* empty */
+                   | parametro
+                   | parametros_list COMMA parametro
+                   | parametros_list TEXT
+                   ;
+
+parametro ::= ID
+               {: PseudoParserDriver.parametros_validos++; :}
+            | NUM
+               {: PseudoParserDriver.parametros_invalidos++; :}
+            ;
+
+/* C?digo */
+codigo_block ::= COD_OPEN codigo_content COD_CLOSE
+                ;
+
+codigo_content ::= /* empty */
+                  | codigo_content statement
+                  | codigo_content IF_OPEN condicion_block codigo_block IF_CLOSE
+                    {: PseudoParserDriver.if_validos++; :}
+                  | codigo_content DO_OPEN codigo_block COND_OPEN condicion_expr COND_CLOSE DO_CLOSE
+                    {: PseudoParserDriver.do_validos++; :}
+                  ;
+
+statement ::= assignment
+             | TEXT
+             ;
+
+assignment ::= ID ASSIGN condicion_expr SEMI
+                {: PseudoParserDriver.asignaciones_validas++; :}
+              ;
+
+condicion_expr ::= primary
+                 | condicion_expr PLUS primary
+                 | condicion_expr MINUS primary
+                 | condicion_expr TIMES primary
+                 | condicion_expr DIV primary
+                 | condicion_expr ANDAND condicion_expr
+                 | condicion_expr OROR condicion_expr
+                 | condicion_expr GT primary
+                 | condicion_expr LT primary
+                 ;
+
+primary ::= ID
+           | NUM
+           | LPAREN condicion_expr RPAREN
+           ;

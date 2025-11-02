@@ -1,0 +1,14 @@
+<funcion>
+<parametros> contador, limite </parametros>
+<codigo>
+contador = 0;
+
+<do>
+<codigo>
+contador = contador + 1;
+</codigo>
+<condicion> contador < limite </condicion>
+</do>
+
+</codigo>
+</funcion>

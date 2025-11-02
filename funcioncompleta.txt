@@ -1,0 +1,23 @@
+<funcion>
+<parametros> x, y, z </parametros>
+<codigo>
+x = 10;
+y = 5;
+z = 0;
+
+<if>
+<condicion> x > y </condicion>
+<codigo>
+z = x - y;
+</codigo>
+</if>
+
+<do>
+<codigo>
+z = z + 1;
+</codigo>
+<condicion> z < 10 </condicion>
+</do>
+
+</codigo>
+</funcion>
